@@ -5,13 +5,13 @@ and classification for objects with discrete (String-valued) attributes.
 
 ![realestate](https://i.imgur.com/mbgt1HY.png)
 
-### Training data
+### Training data (realEstateTrain.csv)
 ![train](https://i.imgur.com/vD5YBXz.png)
 
-### Training test data
+### Training test data (realEstateTest.csv)
 ![train](https://i.imgur.com/lOhpb3U.png)
 
-### Classification
+### Classification (realEstateOutput.csv)
 ![asdas](https://i.imgur.com/0szffut.png)
 
 ### ID3 Stratergy
