@@ -3,6 +3,18 @@
 Implemented the ID3 algorithm in Java to perform decision tree learning
 and classification for objects with discrete (String-valued) attributes.
 
+![realestate](https://i.imgur.com/mbgt1HY.png)
+
+### Training data
+![train](https://i.imgur.com/vD5YBXz.png)
+
+### Training test data
+![train](https://i.imgur.com/lOhpb3U.png)
+
+###Classification
+![asdas](https://i.imgur.com/0szffut.png)
+
+Here you can see that 
 ### ID3 Stratergy
 
 The ID3 algorithm tries to adhere to the pseudo code that is shown online and discussed on
