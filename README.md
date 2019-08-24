@@ -1,4 +1,9 @@
-# ID3
+# ID3 Implementation
+
+Implemented the ID3 algorithm in Java to perform decision tree learning
+and classification for objects with discrete (String-valued) attributes.
+
+### ID3 Stratergy
 
 The ID3 algorithm tries to adhere to the pseudo code that is shown online and discussed on
 the slides. Hence, the implementation focuses on building a decision tree which initially is
