@@ -1,0 +1,15 @@
+a1=1
+	a2=1
+		Class: 1
+	a2=0
+		Class: 0
+a1=0
+	a2=1
+		Class: 0
+	a2=0
+		Class: 1
+
+1
+0
+0
+1

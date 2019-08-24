@@ -1,0 +1,27 @@
+Location=Suburban
+	Lifestyle=High
+		Class: No
+	Lifestyle=Low
+		Class: Yes
+Location=Rural
+	Class: Yes
+Location=Urban
+	Previous Customer=No
+		Class: Yes
+	Previous Customer=Yes
+		Class: No
+
+No
+No
+Yes
+Yes
+Yes
+No
+Yes
+No
+Yes
+Yes
+Yes
+Yes
+Yes
+No

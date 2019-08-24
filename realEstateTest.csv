@@ -1,0 +1,15 @@
+Location,House Type,Lifestyle,Previous Customer
+Suburban,Detached,High,No
+Suburban,Detached,High,Yes
+Rural,Detached,High,No
+Urban,Semi-detached,High,No
+Urban,Semi-detached,Low,No
+Urban,Semi-detached,Low,Yes
+Rural,Semi-detached,Low,Yes
+Suburban,Terrace,High,No
+Suburban,Semi-detached,Low,No
+Urban,Terrace,Low,No
+Suburban,Terrace,Low,Yes
+Rural,Terrace,High,Yes
+Rural,Detached,Low,No
+Urban,Terrace,High,Yes
