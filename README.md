@@ -1,32 +1,51 @@
 # ID3
 
-The aim of this assignment is to implement the ID3 algorithm in Java to perform decision tree learning
-and classification for objects with discrete (String-valued) attributes. You will be given two input files,
-one containing labelled training examples, and the other containing examples which have no label,
-which your programme has to classify. In each file the examples will be described by a list of attributes,
-one example per line, with the attribute values separated by commas (comma-separated value or CSV
-format). You may assume that none of the attribute names or values contains a comma or other
-punctuation. The first line of each input file contains the names of the attributes. The last attribute
-on each line in the training file is the class that the example belongs to. Apart from the class, which
-only appears in the training data, the other attributes will be in the same order in both files.
+The ID3 algorithm tries to adhere to the pseudo code that is shown online and discussed on
+the slides. Hence, the implementation focuses on building a decision tree which initially is
+made using training data which is already classified. Once these rules / decisions have been
+set the tree is then probed and tested to another unclassified dataset to see how that data is
+classified. To implement this, on every iteration, it iterates through every unused attribute of
+the training set and then calculates the entropy of that attribute. (Later calculate information
+gain). It selects the attribute with the smallest entropy and then the initial training set is split
+into subsets of data. It then recursively goes through the subset considering attributes it’s
+never seen before only stopping if the entropy is 0 or there are no more attributes to be
+considered. This is when we create a leaf node, which is pure (only one classification), and
+so cannot be split upon again. 
 
-You are provided with a skeleton programme to get you started. The skeleton programme takes care
-of the text processing: reading and parsing the CSV files, and finding the set of values that each
-attribute can have. You may assume that no attribute has a value in the testing data that does not
-also occur in the training data. The skeleton programme also contains most of the data structures
-that you need to write your methods. You need to complete the methods classify() and train().
-Do NOT change their specification or any of the predefined data structures, or else you might fail
-automatic marking. You may add new methods, variables and classes as they are needed. Do not
-change the main() method.
+In my implementation of ID3, I tried to follow the guidelines of the pseudo code which
+specifically focuses on calculating entropy and information gain to determine the split in the
+dataset. It is also important to keep track on which attributes were also considered during the
+initial call. I track this initial call by using a string array called “usedAttributes” and I pass this
+to my main recursive call “buildTree()” which is called initially by “Train()”. usedAttributes
+contains all the names of all the attributes of the dataset. I achieve this by utilising .Clone().
+This array is then passed along buildTree() so it can know when to consider certain
+attributes when determining when to split or not. In my implementation, I make sure the
+information gain value of used attribute is zero as we always choose the highest value which
+means these attributes won’t be considered again. 
 
-You are also provided with two sets of test files (each containing the two input files and the correct
-output file). Test with (replacing the relevant file names):
+In a good summary, the Train() algorithm gets called from main. Here, I create my
+usedAttributes String array by cloning all the attributes names via data[0].clone(). The
+decision tree is then initialised and then sent to the buildTree() recursive call. During
+buildTree, the root nodes entropy is calculated. It skips the base case (to say it’s a leaf node
+– 0 entropy / All attributed have been considered). Hence, it goes to my else clause where it
+checks the highest information gain value subset. I made two for loops, separate from each
+other. The first gets all the respective entropy for the root nodes children and count every
+instance and put them in their respective arrays subSetEntropy and instanceCount. We then
+calculate information again and then make the current node a decision node and update it’s
+values by making node.value = the best attribute and it’s children to be initialised. We then
+call buildTree again with the new subset and used attributes. 
 
-*java ID3 TrainFile.csv TestFile.csv >MyOutput.csv
-diff MyOutput.csv OutputFile.csv*
+Some design decisions that were made was I wanted this to be quite simple. I believe using
+other data structures like a HashSet or HashMap may have been better in the long term due
+to their great lookup time but due to time constraints I was unable to do so.
 
-The diff command should give no output if your code is correct. Note that the given test files are
-very simple tests (the data is taken from the questions in Tutorial 5, so you can check the code step
-by step). You will need to design your own tests to make sure your code functions correctly under
-all legal input conditions (e.g. 1 class; 3 or more classes; and cases where the training set can not be
-perfectly classified). Note: the supplied tests are only a small part of the automatic testing.
+Other design decisions I met were dealing with empty sets. My code initially tries to preemptively decide that the second row is where data is stored where the first are the headers.
+However, there are empty sets where their “data” is only the headers and I cannot iterate to
+an empty set because it doesn’t have a second row – an ArrayOutOfBounds. In this case, I
+just have to catch this exception and send the full dataset back up but with all the attributes
+“used” so none of the things will be considered and then will be decided as a leaf node as
+shown in the base case.
+
+### Bugs
+
+// TODO: Program uses a pure leaf when data is available but no more attributes left. Need to consider if they don't have the same class
